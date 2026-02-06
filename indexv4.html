@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aastha Gautam - Revenue Operations Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0A0A0A;
+            --dark-grey: #1A1A1A;
+            --text-grey: #525252;
+            --light-grey: #F8F8F8;
+            --border-grey: #E8E8E8;
+            --white: #FFFFFF;
+            
+            --coral: #FF6B4A;
+            --blue: #4A90E2;
+            --purple: #8B5CF6;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-grey);
+            z-index: 1000;
+            padding: var(--space-md) var(--space-xl);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-grey);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-links .resume-btn {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.625rem 1.25rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-links .resume-btn:hover {
+            background: var(--dark-grey);
+            transform: translateY(-1px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-md);
+            color: var(--black);
+        }
+
+        .hero-subheading {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--text-grey);
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-grey);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--black);
+            display: block;
+            margin-bottom: var(--space-xs);
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-grey);
+            letter-spacing: 0.05em;
+        }
+
+        /* WHO AM I SECTION */
+        .about-section {
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            color: var(--text-grey);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+        }
+
+        .about-content p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* IMPACT SECTION */
+        .impact-section {
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--light-grey);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subheading {
+            font-size: 1.125rem;
+            color: var(--text-grey);
+            font-weight: 400;
+        }
+
+        /* CASE STUDY CARDS */
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 1px solid var(--border-grey);
+            opacity: 1;
+            transform: translateY(0);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .case-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .case-card:hover .case-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .case-visual {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .case-content {
+            padding: var(--space-lg);
+        }
+
+        .case-metric {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.02em;
+        }
+
+        .case-metric.coral { color: var(--coral); }
+        .case-metric.blue { color: var(--blue); }
+        .case-metric.purple { color: var(--purple); }
+
+        .case-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .case-description {
+            font-size: 0.9375rem;
+            color: var(--text-grey);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-sm);
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-grey);
+            background: var(--light-grey);
+            border-radius: 50px;
+            border: 1px solid var(--border-grey);
+        }
+
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--black);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* MORE PROJECTS DROPDOWN */
+        .more-projects {
+            margin-top: var(--space-xl);
+        }
+
+        .dropdown-toggle {
+            background: transparent;
+            border: 2px solid var(--black);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin: 0 auto;
+            transition: all 0.3s;
+        }
+
+        .dropdown-toggle:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .dropdown-toggle svg {
+            transition: transform 0.3s;
+        }
+
+        .dropdown-toggle.active svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: var(--space-lg);
+        }
+
+        .dropdown-content.active {
+            max-height: 2000px;
+        }
+
+        .mini-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .mini-card {
+            background: var(--white);
+            border: 1px solid var(--border-grey);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .mini-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .mini-card h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mini-card p {
+            font-size: 0.9375rem;
+            color: var(--text-grey);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+
+        /* FOOTER CTA */
+        .footer-cta {
+            padding: var(--space-3xl) var(--space-xl);
+            background: linear-gradient(135deg, var(--dark-grey) 0%, var(--black) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .footer-cta p {
+            font-size: 1.125rem;
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .footer-cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-white:hover {
+            background: var(--light-grey);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline-white:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--white);
+            padding: var(--space-xl) var(--space-xl);
+            border-top: 1px solid var(--border-grey);
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-grey);
+            font-size: 0.9375rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: var(--space-md);
+            }
+
+            .nav-links {
+                gap: var(--space-md);
+                font-size: 0.875rem;
+            }
+
+            .hero {
+                padding: var(--space-2xl) var(--space-md);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-md);
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .footer-cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">AASTHA GAUTAM</a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="Aastha_Gautam_Resume_Updated.docx" class="resume-btn" download>Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>I turn operational chaos into revenue engines.</h1>
+            <p class="hero-subheading">
+                Revenue operations specialist who builds the infrastructure that makes go-to-market teams unstoppable. From messy CRMs to predictable pipelines—I fix what's broken and scale what works.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="#work" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="20">0</span>
+                    <span class="stat-label">% ROI Increase</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="30">0</span>
+                    <span class="stat-label">% Pipeline Growth</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">x Sales-Ready Leads</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">% Conversion Boost</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO AM I SECTION -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-photo">
+                <img src="profile-photo.jpg" alt="Aastha Gautam">
+            </div>
+            <div class="about-content">
+                <h2>Who Am I?</h2>
+                <p>Revenue operations specialist. Former mechanical engineer. Systems thinker who builds infrastructure that makes go-to-market teams unstoppable.</p>
+                <p>I've built marketing ops from scratch for an 8-person B2B consultancy, cleaned 50K+ messy CRM records, and designed multi-channel lead gen engines with zero ad budget. Currently finishing my MSc in Management at UCD Smurfit in Dublin.</p>
+                <p>My superpower: turning operational chaos into measurable growth.</p>
+                <p>Off the clock: Basketball > everything 🏀</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT SECTION -->
+    <section class="impact-section" id="work">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Impact</h2>
+                <p class="section-subheading">Three systems that transformed revenue operations.</p>
+            </div>
+
+            <div class="case-studies-grid">
+                <!-- CASE 1: HubSpot -->
+                <a href="case-study-hubspot.html" class="case-card">
+                    <div class="case-visual" style="background: linear-gradient(135deg, #FF6B4A15 0%, #FF6B4A05 100%);">
+                        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="30" width="320" height="120" rx="8" fill="#FFF" stroke="#E8E8E8" stroke-width="2"/>
+                            <rect x="40" y="30" width="320" height="30" rx="8" fill="#FF6B4A" opacity="0.1"/>
+                            <circle cx="70" cy="45" r="5" fill="#FF6B4A"/>
+                            <circle cx="90" cy="45" r="5" fill="#FF6B4A" opacity="0.5"/>
+                            <circle cx="110" cy="45" r="5" fill="#FF6B4A" opacity="0.3"/>
+                            <rect x="80" y="110" width="30" height="30" rx="4" fill="#FF6B4A" opacity="0.3"/>
+                            <rect x="130" y="95" width="30" height="45" rx="4" fill="#FF6B4A" opacity="0.5"/>
+                            <rect x="180" y="80" width="30" height="60" rx="4" fill="#FF6B4A" opacity="0.7"/>
+                            <rect x="230" y="85" width="30" height="55" rx="4" fill="#FF6B4A"/>
+                            <path d="M 60 80 Q 100 70 140 80 T 220 80 T 300 80" stroke="#FF6B4A" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="4,4"/>
+                        </svg>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metric coral">+20%</div>
+                        <h3 class="case-title">Automated Marketing Operations</h3>
+                        <p class="case-description">
+                            Rebuilt HubSpot infrastructure from scratch, eliminating 10 hours of manual reporting weekly and increasing campaign ROI by 20%. Built lead scoring, workflows, and dashboards that connected marketing to revenue.
+                        </p>
+                        <div class="case-tags">
+                            <span class="tag">HubSpot</span>
+                            <span class="tag">Marketing Automation</span>
+                            <span class="tag">Lead Scoring</span>
+                            <span class="tag">Workflow Design</span>
+                        </div>
+                        <div class="case-link">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 12l4-4-4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- CASE 2: B2B Lead Gen -->
+                <a href="case-study-leadgen.html" class="case-card">
+                    <div class="case-visual" style="background: linear-gradient(135deg, #4A90E215 0%, #4A90E205 100%);">
+                        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 100 45 L 300 45 L 250 90 L 150 90 Z" fill="#4A90E2" opacity="0.3"/>
+                            <path d="M 150 90 L 250 90 L 220 120 L 180 120 Z" fill="#4A90E2" opacity="0.5"/>
+                            <path d="M 180 120 L 220 120 L 210 142 L 190 142 Z" fill="#4A90E2" opacity="0.7"/>
+                            <circle cx="80" cy="30" r="10" fill="#4A90E2" opacity="0.4"/>
+                            <circle cx="200" cy="25" r="10" fill="#4A90E2" opacity="0.4"/>
+                            <circle cx="320" cy="30" r="10" fill="#4A90E2" opacity="0.4"/>
+                            <line x1="80" y1="40" x2="120" y2="45" stroke="#4A90E2" stroke-width="2" opacity="0.3"/>
+                            <line x1="200" y1="35" x2="200" y2="45" stroke="#4A90E2" stroke-width="2" opacity="0.3"/>
+                            <line x1="320" y1="40" x2="280" y2="45" stroke="#4A90E2" stroke-width="2" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metric blue">3x Pipeline</div>
+                        <h3 class="case-title">Scaled B2B Pipeline Generation</h3>
+                        <p class="case-description">
+                            Designed and executed multi-channel lead generation engine that tripled qualified pipeline with zero ad budget. Built sales enablement systems, ICP frameworks, and operational infrastructure for repeatable growth.
+                        </p>
+                        <div class="case-tags">
+                            <span class="tag">Pipeline Design</span>
+                            <span class="tag">Sales Enablement</span>
+                            <span class="tag">Multi-Channel Strategy</span>
+                            <span class="tag">B2B Operations</span>
+                        </div>
+                        <div class="case-link">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 12l4-4-4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- CASE 3: Data Ops -->
+                <a href="case-study-dataops.html" class="case-card">
+                    <div class="case-visual" style="background: linear-gradient(135deg, #8B5CF615 0%, #8B5CF605 100%);">
+                        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.3">
+                                <rect x="40" y="45" width="80" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="50" y="65" width="60" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="35" y="85" width="90" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="55" y="105" width="70" height="15" rx="3" fill="#8B5CF6"/>
+                            </g>
+                            <path d="M 150 90 L 200 90" stroke="#8B5CF6" stroke-width="3" opacity="0.5"/>
+                            <path d="M 190 82 L 200 90 L 190 98" stroke="#8B5CF6" stroke-width="3" fill="none" opacity="0.5"/>
+                            <g opacity="0.8">
+                                <rect x="230" y="52" width="100" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="230" y="72" width="100" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="230" y="92" width="100" height="15" rx="3" fill="#8B5CF6"/>
+                                <rect x="230" y="112" width="100" height="15" rx="3" fill="#8B5CF6"/>
+                            </g>
+                            <path d="M 345 60 L 350 64 L 360 54" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+                            <path d="M 345 80 L 350 84 L 360 74" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+                            <path d="M 345 100 L 350 104 L 360 94" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+                            <path d="M 345 120 L 350 124 L 360 114" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metric purple">-65% Bounces</div>
+                        <h3 class="case-title">Data Operations & Process Standardization</h3>
+                        <p class="case-description">
+                            Rescued 50K+ CRM records from chaos—merged 8K duplicates, built validation rules, and created SOPs that sustained data quality at scale. Reduced bounce rates by 65% and saved sales team 5 hours weekly.
+                        </p>
+                        <div class="case-tags">
+                            <span class="tag">Data Stewardship</span>
+                            <span class="tag">Salesforce</span>
+                            <span class="tag">Process Design</span>
+                            <span class="tag">Quality Control</span>
+                        </div>
+                        <div class="case-link">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 12l4-4-4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- MORE PROJECTS DROPDOWN -->
+            <div class="more-projects">
+                <button class="dropdown-toggle" id="dropdownToggle">
+                    View 3 additional projects
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 6l4 4 4-4"/>
+                    </svg>
+                </button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <div class="mini-cards">
+                        <div class="mini-card">
+                            <h4>
+                                Google Pay: Reducing Transaction Failures
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 4L4 12M12 4v8M12 4H4"/>
+                                </svg>
+                            </h4>
+                            <p>Conducted user research with 51+ respondents and designed intelligent payment system to reduce failures—the #1 user pain point. Solution projected ₹427M annual revenue through smart reminders and gateway optimization.</p>
+                            <div class="case-tags">
+                                <span class="tag">User Research</span>
+                                <span class="tag">Product Strategy</span>
+                                <span class="tag">System Design</span>
+                                <span class="tag">Revenue Modeling</span>
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <h4>
+                                DCF Valuation - Kingspan Group
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 4L4 12M12 4v8M12 4H4"/>
+                                </svg>
+                            </h4>
+                            <p>Comprehensive financial analysis identifying 75% undervaluation through DCF modeling, ratio analysis, and ESG assessment. Delivered BUY recommendation based on strong fundamentals and 65% emissions reduction achievement.</p>
+                            <div class="case-tags">
+                                <span class="tag">Financial Modeling</span>
+                                <span class="tag">DCF Analysis</span>
+                                <span class="tag">Ratio Analysis</span>
+                                <span class="tag">ESG Assessment</span>
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <h4>
+                                Shoonya: Privacy-First Wellness App
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 4L4 12M12 4v8M12 4H4"/>
+                                </svg>
+                            </h4>
+                            <p>Built minimalist mental wellness app as design experiment exploring user privacy and data architecture. Implemented client-side local storage with zero backend infrastructure—demonstrating technical problem-solving and product thinking.</p>
+                            <div class="case-tags">
+                                <span class="tag">Product Design</span>
+                                <span class="tag">Frontend Development</span>
+                                <span class="tag">Privacy Architecture</span>
+                                <span class="tag">UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="footer-cta" id="contact">
+        <h2>Ready to build systems that scale?</h2>
+        <p>I'm seeking Revenue Operations, Marketing Operations, or Sales Operations roles at growth-stage B2B companies. Currently based in Dublin, available immediately for remote roles across Europe.</p>
+        <div class="footer-cta-buttons">
+            <a href="/cdn-cgi/l/email-protection#c1a0a0b2b5a9a0b9a6a0b4b5a0ac81a6aca0a8adefa2aeac" class="btn btn-white">Get in Touch</a>
+            <a href="Aastha_Gautam_Resume_Updated.docx" class="btn btn-outline-white" download>Download Resume</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Aastha Gautam | Built with care in Dublin ☕</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // COUNTER ANIMATION FOR STATS
+        function animateCounter(element, target, duration = 1200) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                        
+                        if (entry.target.classList.contains('stat-card')) {
+                            const numberElement = entry.target.querySelector('.stat-number');
+                            const target = parseInt(numberElement.dataset.target);
+                            animateCounter(numberElement, target);
+                        }
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // DROPDOWN TOGGLE
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownContent = document.getElementById('dropdownContent');
+
+        dropdownToggle.addEventListener('click', () => {
+            dropdownToggle.classList.toggle('active');
+            dropdownContent.classList.toggle('active');
+            
+            const isActive = dropdownContent.classList.contains('active');
+            dropdownToggle.innerHTML = isActive 
+                ? `Hide additional projects <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>`
+                : `View 3 additional projects <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>`;
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behav
