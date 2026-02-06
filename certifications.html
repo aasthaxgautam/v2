@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Certifications - Aastha Gautam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* Header */
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Skills Grid */
+        .skills-section {
+            margin-bottom: 5rem;
+        }
+
+        .skills-section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .skills-section p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            border: 1px solid #e5e5e5;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 1rem;
+            color: #4a4a4a;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        /* Certifications */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            border: 1px solid #e5e5e5;
+            padding: 2rem;
+            background: #f9f9f9;
+            transition: transform 0.2s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .cert-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .cert-card .issuer {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .date {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card .description {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .cert-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .cert-card a:hover {
+            opacity: 0.6;
+        }
+
+        /* In Progress Section */
+        .in-progress {
+            background: #f9f9f9;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .in-progress h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .in-progress p {
+            font-size: 1.05rem;
+            color: #4a4a4a;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .skills-grid,
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">AASTHA GAUTAM</a>
+            <ul>
+                <li><a href="index.html#work">Work</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html">Skills</a></li>
+                <li><a href="mailto:aasthaxgautam@gmail.com">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Skills & Expertise</h1>
+        <p class="subtitle">A blend of operational rigor, technical proficiency, and strategic thinking.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Core Skills -->
+        <section class="skills-section">
+            <h2>Core Competencies</h2>
+            <p>Skills developed through hands-on experience building and scaling go-to-market operations.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Operations</h3>
+                    <ul>
+                        <li>Revenue Operations</li>
+                        <li>Marketing Operations</li>
+                        <li>Process Optimization</li>
+                        <li>Workflow Automation</li>
+                        <li>SOP Development</li>
+                        <li>Program Management</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Platforms & Tools</h3>
+                    <ul>
+                        <li>HubSpot (Advanced)</li>
+                        <li>Salesforce</li>
+                        <li>Google Analytics</li>
+                        <li>Monday.com</li>
+                        <li>Trello / Asana</li>
+                        <li>Microsoft Office Suite</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data & Analytics</h3>
+                    <ul>
+                        <li>Excel (Advanced)</li>
+                        <li>SQL</li>
+                        <li>Funnel Analysis</li>
+                        <li>KPI Dashboarding</li>
+                        <li>A/B Testing</li>
+                        <li>ROI Measurement</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Go-to-Market</h3>
+                    <ul>
+                        <li>Sales Enablement</li>
+                        <li>Lead Generation</li>
+                        <li>Campaign Operations</li>
+                        <li>Multi-Channel Strategy</li>
+                        <li>B2B Marketing</li>
+                        <li>Content Strategy</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical</h3>
+                    <ul>
+                        <li>API Integrations</li>
+                        <li>Data Stewardship</li>
+                        <li>System Design</li>
+                        <li>HTML/CSS/JavaScript</li>
+                        <li>Automation Workflows</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Strategic</h3>
+                    <ul>
+                        <li>Cross-Functional Collaboration</li>
+                        <li>Stakeholder Management</li>
+                        <li>Process Documentation</li>
+                        <li>Change Management</li>
+                        <li>Strategic Planning</li>
+                        <li>Performance Tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="skills-section">
+            <h2>Certifications</h2>
+            <p>Formal training and validated expertise across key platforms and domains.</p>
+            
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h3>Bloomberg Market Concepts</h3>
+                    <div class="issuer">Bloomberg</div>
+                    <div class="date">2024</div>
+                    <div class="description">Comprehensive training in financial markets, economic indicators, and market analysis fundamentals.</div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>Strategy Consulting Job Simulation</h3>
+                    <div class="issuer">Boston Consulting Group (BCG)</div>
+                    <div class="date">2024</div>
+                    <div class="description">Hands-on simulation covering problem-solving frameworks, data analysis, and strategic recommendations.</div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>OCI AI Certified Foundations Associate</h3>
+                    <div class="issuer">Oracle</div>
+                    <div class="date">2024</div>
+                    <div class="description">Foundation-level certification in Oracle Cloud Infrastructure AI services and machine learning concepts.</div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>Google Ads Certified</h3>
+                    <div class="issuer">Google</div>
+                    <div class="date">2024</div>
+                    <div class="description">Proficiency in Google Ads campaign management, optimization, and performance measurement.</div>
+                </div>
+            </div>
+
+            <!-- In Progress -->
+            <div class="in-progress">
+                <h3>📚 Currently Pursuing</h3>
+                <p><strong>HubSpot Revenue Operations Certification</strong> — Expected completion: Q1 2026</p>
+                <p><strong>SQL for Data Analysis (LeetCode Practice)</strong> — Ongoing skill development</p>
+                <p><strong>Salesforce Administrator Certification</strong> — Planned for Q2 2026</p>
+            </div>
+        </section>
+
+        <!-- Tools Proficiency -->
+        <section class="skills-section">
+            <h2>Tools Proficiency Matrix</h2>
+            <p>Self-assessed proficiency across platforms I've worked with extensively.</p>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #1a1a1a;">
+                            <th style="text-align: left; padding: 1rem; font-weight: 600;">Tool</th>
+                            <th style="text-align: left; padding: 1rem; font-weight: 600;">Proficiency</th>
+                            <th style="text-align: left; padding: 1rem; font-weight: 600;">Experience</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">HubSpot</td>
+                            <td style="padding: 1rem;"><strong>Advanced</strong></td>
+                            <td style="padding: 1rem;">2+ years</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">Excel</td>
+                            <td style="padding: 1rem;"><strong>Advanced</strong></td>
+                            <td style="padding: 1rem;">5+ years</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">Salesforce</td>
+                            <td style="padding: 1rem;"><strong>Intermediate</strong></td>
+                            <td style="padding: 1rem;">1 year</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">SQL</td>
+                            <td style="padding: 1rem;"><strong>Intermediate</strong></td>
+                            <td style="padding: 1rem;">1 year</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">Google Analytics</td>
+                            <td style="padding: 1rem;"><strong>Intermediate</strong></td>
+                            <td style="padding: 1rem;">2+ years</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e5e5e5;">
+                            <td style="padding: 1rem;">Monday.com / Asana</td>
+                            <td style="padding: 1rem;"><strong>Proficient</strong></td>
+                            <td style="padding: 1rem;">2+ years</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Aastha Gautam | <a href="https://www.linkedin.com/in/aasthaxgautam/" target="_blank">LinkedIn</a> | <a href="mailto:aasthaxgautam@gmail.com">Email</a> | <a href="index.html">Back to Portfolio</a></p>
+    </footer>
+</body>
+</html>
