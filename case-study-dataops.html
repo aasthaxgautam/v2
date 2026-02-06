@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Operations - Aastha Gautam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+.section { margin-bottom: 1.75rem; padding: 1.75rem 1.5rem; border-radius: 16px; border: 1px solid #eee; }
+h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.6rem; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 1.2rem 0 0.4rem; }
+p { margin-bottom: 0.6rem; color: #555; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin: 1.2rem 0; }
+.stat-card { background: #f9f9f9; padding: 1rem; border-radius: 12px; border: 1px solid #eee; text-align: center; opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.stat-card.visible { opacity: 1; transform: translateY(0); }
+.stat-number { font-size: 1.4rem; font-weight: 900; color: #000; display: block; }
+.stat-label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; color: #999; }
+.tool-tag { padding: 0.3rem 0.9rem; font-size: 0.7rem; font-weight: 700; color: #555; background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); border-radius: 50px; border: 1px solid #eee; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg-white: #FFFFFF; --bg-light: #F8F8F8; --bg-grey: #E8E8E8; --bg-dark: #1A1A1A; --bg-black: #0A0A0A; --text-black: #0A0A0A; --text-grey: #525252; }
+body { font-family: 'Inter', sans-serif; line-height: 1.7; color: var(--text-black); background: var(--bg-white); }
+.hero { background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-black) 100%); color: white; padding: 5rem 2rem; text-align: center; }
+.hero h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.2; margin-bottom: 1rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.hero-meta { font-size: 1rem; opacity: 0.85; font-weight: 500; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+.back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--text-black); text-decoration: none; font-weight: 600; }
+.back-link:hover { text-decoration: underline; }
+ul, ol { margin: 1rem 0; padding-left: 2rem; }
+li { margin-bottom: 0.75rem; font-size: 1rem; color: var(--text-grey); line-height: 1.7; }
+.highlight-box { background: var(--bg-light); padding: 1.2rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--text-black); }
+.highlight-box strong { display: block; font-size: 1.1rem; color: var(--text-black); margin-bottom: 0.5rem; }
+.before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+.ba-card { padding: 1.2rem; border-radius: 12px; border: 2px solid var(--bg-grey); }
+.ba-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text-black); }
+.ba-before { background: #FEF2F2; border-color: #FCA5A5; }
+.ba-after { background: #F0FDF4; border-color: #86EFAC; }
+.tools-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0; }
+@media (max-width: 768px) { .stats-grid, .before-after { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Data Operations & Process Standardization for Market Outreach</h1>
+        <div class="hero-meta">Leap Finance • May 2021 - June 2021 • Operations Internship</div>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+        <div class="section">
+            <h2>Project Overview</h2>
+            <div class="highlight-box">
+                <strong>The Challenge</strong>
+                Leap Finance was scaling rapidly, but their outreach operations were being held back by poor data quality. The CRM database was filled with duplicates, incomplete records, and inconsistent formatting. This meant the sales team wasted hours on invalid contacts, and marketing campaigns had low deliverability. I was brought in as an Operations Intern to solve this data chaos and standardize processes.
+            </div>
+            <p><strong>My Role:</strong> Operations Intern (Data Stewardship & Process Design)</p>
+            <p><strong>Duration:</strong> 2 months (May 2021 - June 2021)</p>
+            <p><strong>Company Context:</strong> Fin-tech startup helping Indian students study abroad, rapidly scaling outreach operations</p>
+        </div>
+
+        <div class="section">
+            <h2>Results</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><span class="stat-number">+10%</span><span class="stat-label">Lead Generation</span></div>
+                <div class="stat-card"><span class="stat-number">+10%</span><span class="stat-label">Conversion Rate</span></div>
+                <div class="stat-card"><span class="stat-number">30%</span><span class="stat-label">Fewer Errors</span></div>
+                <div class="stat-card"><span class="stat-number">5 hrs</span><span class="stat-label">Saved Weekly</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>The Problem: Data Quality Crisis</h2>
+            <p>When I started at Leap Finance, the data quality issues were immediately apparent. The CRM (Salesforce) was supposed to be the source of truth, but it had become unreliable:</p>
+            <h3>Critical Data Quality Issues:</h3>
+            <ul>
+                <li><strong>Duplicate records:</strong> Same student appeared 3-4 times with slight name variations (e.g., "Amit Kumar", "Amit K", "A Kumar")</li>
+                <li><strong>Incomplete data:</strong> 40% of records missing phone numbers, 60% missing email addresses</li>
+                <li><strong>Inconsistent formatting:</strong> Phone numbers in different formats (+91-XXX, 91XXX, 0XXX), no standardization</li>
+                <li><strong>Outdated information:</strong> Records from 2019 still marked as "active leads"</li>
+                <li><strong>No validation rules:</strong> Sales reps could enter anything - typos, test data, incomplete entries</li>
+            </ul>
+
+            <h3>Impact on Business Operations:</h3>
+            <ul>
+                <li><strong>Wasted outreach efforts:</strong> Sales reps calling the same person multiple times, leading to frustrated prospects</li>
+                <li><strong>Low campaign deliverability:</strong> Marketing emails bouncing due to invalid addresses (35% bounce rate)</li>
+                <li><strong>Inaccurate reporting:</strong> Leadership making decisions based on inflated lead counts</li>
+                <li><strong>Missed opportunities:</strong> Hot leads buried in duplicate records or marked inactive by mistake</li>
+                <li><strong>Frustrated team:</strong> Sales spending 30% of their time on data cleanup instead of selling</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>The Breaking Point:</strong>
+                A major marketing campaign targeting 10,000 leads had a 40% failure rate due to bad data - the CMO demanded an immediate fix. That's when I was tasked with overhauling the data operations.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>My Solution: Systematic Data Operations Framework</h2>
+            <h3>Phase 1: Data Audit & Assessment (Week 1)</h3>
+            <ul>
+                <li><strong>Quantified the problem:</strong> Analyzed 50,000+ records in Salesforce to identify patterns</li>
+                <li><strong>Categorized issues:</strong> Created taxonomy of data quality problems (duplicates, incomplete, formatting, outdated)</li>
+                <li><strong>Prioritized impact:</strong> Focused on issues affecting sales efficiency and campaign deliverability</li>
+                <li><strong>Interviewed stakeholders:</strong> Talked to sales reps, marketers, and team leads about pain points</li>
+            </ul>
+
+            <h3>Phase 2: Data Cleaning & Standardization (Weeks 2-4)</h3>
+            <p><strong>Step 1: Duplicate Detection & Merging</strong></p>
+            <ul>
+                <li>Built custom duplicate detection rules in Salesforce based on: name similarity (fuzzy matching), email domain, phone number</li>
+                <li>Created scoring system to identify high-confidence duplicates vs edge cases</li>
+                <li>Manually reviewed 500+ potential duplicates to ensure no data loss</li>
+                <li>Merged 8,000+ duplicate records, preserving the most complete data</li>
+            </ul>
+
+            <p><strong>Step 2: Data Enrichment</strong></p>
+            <ul>
+                <li>Used third-party enrichment tools to fill missing email addresses and phone numbers</li>
+                <li>Cross-referenced LinkedIn profiles to verify accuracy</li>
+                <li>Added missing demographic data (course interest, target country, budget range)</li>
+                <li>Enriched 12,000+ incomplete records</li>
+            </ul>
+
+            <p><strong>Step 3: Formatting Standardization</strong></p>
+            <ul>
+                <li>Created standardized formats for all key fields (phone: +91-XXXXX-XXXXX, email: lowercase, names: Title Case)</li>
+                <li>Built automated workflows to standardize new entries</li>
+                <li>Cleaned existing records using batch update scripts</li>
+                <li>Established naming conventions for campaigns, sources, and statuses</li>
+            </ul>
+
+            <div class="before-after">
+                <div class="ba-card ba-before">
+                    <h4>❌ Before: Data Chaos</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li>8,000+ duplicate records</li>
+                        <li>35% email bounce rate</li>
+                        <li>40% missing contact info</li>
+                        <li>No validation rules</li>
+                        <li>Inconsistent formatting</li>
+                    </ul>
+                </div>
+                <div class="ba-card ba-after">
+                    <h4>✅ After: Clean Data</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li>99% unique records</li>
+                        <li>12% email bounce rate</li>
+                        <li>95% complete contact info</li>
+                        <li>Automated validation</li>
+                        <li>Standardized formats</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Phase 3: Process Standardization & SOPs (Weeks 5-6)</h3>
+            <p>Cleaning data once wasn't enough - I needed to prevent it from degrading again:</p>
+            <p><strong>Standard Operating Procedures Created:</strong></p>
+            <ol>
+                <li><strong>Lead Import SOP:</strong> Step-by-step guide for importing leads from events, campaigns, or purchased lists with mandatory validation checks</li>
+                <li><strong>Data Entry Guidelines:</strong> Required fields, formatting rules, and validation checklists for sales reps</li>
+                <li><strong>Duplicate Prevention Protocol:</strong> Search before creating new record, merge protocol for discovered duplicates</li>
+                <li><strong>Data Hygiene Schedule:</strong> Weekly automated duplicate scans, monthly data quality audits, quarterly enrichment runs</li>
+                <li><strong>Campaign Setup Checklist:</strong> Pre-launch data validation requirements for marketing campaigns</li>
+            </ol>
+
+            <p><strong>Automation & Validation Rules Implemented:</strong></p>
+            <ul>
+                <li><strong>Email validation:</strong> Salesforce validation rule preventing invalid email formats</li>
+                <li><strong>Phone formatting:</strong> Automatic formatting of phone numbers to +91-XXXXX-XXXXX</li>
+                <li><strong>Required fields:</strong> Made email, phone, and lead source mandatory before saving</li>
+                <li><strong>Duplicate prevention:</strong> Warning when creating records that match existing ones</li>
+                <li><strong>Auto-assignment rules:</strong> New leads automatically routed based on geography and course interest</li>
+            </ul>
+
+            <h3>Phase 4: Reporting & Analytics (Weeks 7-8)</h3>
+            <p>With clean data, I could finally build reliable performance tracking:</p>
+            <ul>
+                <li><strong>Campaign Performance Dashboards:</strong> Real-time tracking of email deliverability, open rates, click-through rates, and conversions by campaign</li>
+                <li><strong>Lead Source Attribution:</strong> Which channels (events, partnerships, ads, organic) drove the most qualified leads</li>
+                <li><strong>Sales Activity Reports:</strong> Calls made, meetings booked, conversion rates by rep</li>
+                <li><strong>Data Quality Scorecard:</strong> Weekly metrics on duplicate rate, completeness, and formatting compliance</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Challenges & Solutions</h2>
+            <h3>Challenge 1: Scale of Data Cleanup</h3>
+            <p><strong>Problem:</strong> 50,000+ records to clean in 8 weeks with limited technical resources</p>
+            <p><strong>Solution:</strong> Prioritized high-impact records first (recent leads, active campaigns). Used automated scripts where possible. Accepted that perfection wasn't achievable - focused on 80% improvement.</p>
+
+            <h3>Challenge 2: Sales Team Resistance</h3>
+            <p><strong>Problem:</strong> Reps saw SOPs as bureaucratic overhead slowing them down</p>
+            <p><strong>Solution:</strong> Showed them the time savings: "With clean data, you'll spend 5 fewer hours per week chasing bad leads." Got buy-in by demonstrating value, not mandating compliance.</p>
+
+            <h3>Challenge 3: Technical Limitations</h3>
+            <p><strong>Problem:</strong> Some automated validation rules I wanted to implement weren't possible in Salesforce without custom code</p>
+            <p><strong>Solution:</strong> Used workarounds like workflow rules and third-party apps. Spent two weeks manually cleaning critical fields. Documented manual checks in SOPs where automation wasn't possible.</p>
+        </div>
+
+        <div class="section">
+            <h2>Detailed Results & Impact</h2>
+            <h3>Quantitative Outcomes:</h3>
+            <ul>
+                <li><strong>10% increase in lead generation:</strong> Better data quality meant marketing campaigns reached more valid contacts</li>
+                <li><strong>10% boost in conversion rates:</strong> Sales team could focus on real leads instead of chasing ghosts</li>
+                <li><strong>30% reduction in data entry errors:</strong> Validation rules caught mistakes at the point of entry</li>
+                <li><strong>23% improvement in email deliverability:</strong> Bounce rate dropped from 35% to 12%</li>
+                <li><strong>5 hours per week saved per rep:</strong> No more duplicate calls or invalid contact chasing</li>
+            </ul>
+
+            <h3>Operational Improvements:</h3>
+            <ul>
+                <li><strong>Reliable reporting:</strong> Leadership could trust the numbers for strategic decisions</li>
+                <li><strong>Faster campaign launches:</strong> Marketing no longer needed to spend days cleaning lists before campaigns</li>
+                <li><strong>Better customer experience:</strong> Students no longer received duplicate or irrelevant outreach</li>
+                <li><strong>Scalable processes:</strong> SOPs ensured data quality as the team grew from 15 to 40+ reps</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Key Learnings</h2>
+            <h3>1. Data Quality is an Operations Problem, Not a Tech Problem</h3>
+            <p>Cleaning data once doesn't fix anything long-term. You need processes, training, and accountability to maintain quality. The SOPs I built were more valuable than the cleanup itself.</p>
+
+            <h3>2. Involve End Users in Solution Design</h3>
+            <p>I could have built elaborate validation rules that annoyed sales reps. Instead, I asked them what would actually help. This ensured adoption rather than workarounds.</p>
+
+            <h3>3. Prioritize Ruthlessly</h3>
+            <p>With 50,000 records and 8 weeks, I couldn't fix everything. Focusing on high-impact issues (duplicates, campaign data) delivered 80% of the value with 20% of the effort.</p>
+        </div>
+
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <div class="tools-list">
+                <span class="tool-tag">Salesforce CRM</span>
+                <span class="tool-tag">Excel (Advanced)</span>
+                <span class="tool-tag">Google Sheets</span>
+                <span class="tool-tag">Clearbit</span>
+                <span class="tool-tag">LinkedIn Sales Navigator</span>
+                <span class="tool-tag">Zapier</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What This Demonstrates</h2>
+            <ul>
+                <li><strong>Diagnose operational inefficiencies</strong> through systematic data analysis</li>
+                <li><strong>Design scalable processes</strong> that prevent problems, not just fix symptoms</li>
+                <li><strong>Implement data operations best practices</strong> in CRM systems</li>
+                <li><strong>Build validation and automation</strong> to maintain data quality</li>
+                <li><strong>Create clear documentation</strong> (SOPs) that enable teams to sustain improvements</li>
+                <li><strong>Balance speed and thoroughness</strong> under tight deadlines</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Looking for operational rigor?</strong>
+                I'm currently seeking Revenue Operations, Marketing Operations, or Sales Operations roles. Get in touch: <a href="mailto:aasthaxgautam@gmail.com" style="color: var(--text-black);">aasthaxgautam@gmail.com</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => { entry.target.classList.add('visible'); }, index * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.stat-card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
